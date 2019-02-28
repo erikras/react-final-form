@@ -16,18 +16,14 @@ const getValue = (
   event: SyntheticInputEvent<*>,
   currentValue: any,
   valueProp: any,
-  isReactNative: boolean
 ) => {
   if (
-    !isReactNative &&
     event.nativeEvent &&
     (event.nativeEvent: Object).text !== undefined
   ) {
     return (event.nativeEvent: Object).text
   }
-  if (isReactNative && event.nativeEvent) {
-    return (event.nativeEvent: any).text
-  }
+
   const detypedEvent: any = event
   const { target: { type, value, checked } } = detypedEvent
   switch (type) {

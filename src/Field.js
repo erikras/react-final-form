@@ -5,7 +5,6 @@ import diffSubscription from './diffSubscription'
 import type { FieldSubscription, FieldState } from 'final-form'
 import type { FieldPropsWithForm as Props, FieldRenderProps } from './types'
 import renderComponent from './renderComponent'
-import isReactNative from './isReactNative'
 import getValue from './getValue'
 import { withReactFinalForm } from './reactFinalFormContext'
 
@@ -138,7 +137,6 @@ class Field extends React.Component<Props, State> {
               event,
               this.state.state && this.state.state.value,
               _value,
-              isReactNative
             )
           : event
       this.state.state &&

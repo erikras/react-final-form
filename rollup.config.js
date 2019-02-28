@@ -16,6 +16,7 @@ const makeExternalPredicate = externalArr => {
 
 const minify = process.env.MINIFY
 const format = process.env.FORMAT
+const native = process.env.NATIVE
 const es = format === 'es'
 const umd = format === 'umd'
 const cjs = format === 'cjs'
@@ -23,7 +24,7 @@ const cjs = format === 'cjs'
 let output
 
 if (es) {
-  output = { file: `dist/react-final-form.es.js`, format: 'es' }
+  output = { file: pkg.module, format: 'es' }
 } else if (umd) {
   if (minify) {
     output = {
@@ -33,8 +34,10 @@ if (es) {
   } else {
     output = { file: `dist/react-final-form.umd.js`, format: 'umd' }
   }
+} else if (native) {
+  output = { file: pkg['react-native'], format: 'cjs' }
 } else if (cjs) {
-  output = { file: `dist/react-final-form.cjs.js`, format: 'cjs' }
+  output = { file: pkg.main, format: 'cjs' }
 } else if (format) {
   throw new Error(`invalid format specified: "${format}".`)
 } else {
@@ -64,7 +67,11 @@ export default {
         ]
   ),
   plugins: [
-    resolve({ jsnext: true, main: true }),
+    resolve({
+      jsnext: true,
+      main: true,
+      extensions: native ? [ '.native.js', '.js' ] : undefined
+    }),
     flow(),
     commonjs({ include: 'node_modules/**' }),
     babel({

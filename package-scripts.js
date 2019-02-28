@@ -26,6 +26,7 @@ module.exports = {
         concurrent.nps(
           'build.es',
           'build.cjs',
+          'build.native',
           'build.umd.main',
           'build.umd.min',
           'copyTypes'
@@ -38,6 +39,10 @@ module.exports = {
       cjs: {
         description: 'run rollup build with CommonJS format',
         script: 'rollup --config --environment FORMAT:cjs'
+      },
+      native: {
+        description: 'run rollup build resolving alias files for React Native',
+        script: 'rollup --config --environment NATIVE,FORMAT:cjs'
       },
       umd: {
         min: {

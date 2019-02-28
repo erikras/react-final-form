@@ -5,6 +5,7 @@
   "main": "dist/react-final-form.cjs.js",
   "jsnext:main": "dist/react-final-form.es.js",
   "module": "dist/react-final-form.es.js",
+  "react-native": "dist/react-final-form.native.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
