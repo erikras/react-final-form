@@ -17,7 +17,8 @@
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "3.0.1",
-    "final-form": "latest"
+    "final-form": "latest",
+    "prop-types": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
