@@ -15,6 +15,7 @@
     "react-final-form": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "final-form": "latest"
+    "final-form": "latest",
+    "prop-types": "latest"
   }
 }
