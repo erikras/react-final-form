@@ -85,4 +85,7 @@ import TextField from '@material-ui/core/TextField'
 </Field>
 ```
 
+
+Note: To use an `array` for the values (with another field type, like a tags-input component), you can do `value={[...props.input.value]}` to avoid "Invalid prop type of 'string' warning"
+
 Now, [let's look at some examples](../examples)!
