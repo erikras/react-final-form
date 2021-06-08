@@ -112,7 +112,7 @@ function ReactFinalForm<FormValues: FormValuesShape>({
       // don't need to resume validation here; either unmounting, or will re-run this hook with new deps
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [decorators])
+  }, decorators)
 
   // warn about decorator changes
   // istanbul ignore next
