@@ -595,6 +595,43 @@ describe('Field', () => {
     fireEvent.change(getByTestId('name'), { target: { value: 'ERIKRAS' } })
     expect(getByTestId('error')).toHaveTextContent('')
   })
+  it.only('should ', () => {
+    const Component = () => {
+      const [isShowSecondField, setIsShowSecondField] = React.useState(false)
+      const [isShowSecondField1, setIsShowSecondField1] = React.useState(false)
+      return <Form onSubmit={onSubmitMock}>
+        {({ handleSubmit }) => (
+          <form onSubmit={handleSubmit}>
+            <button onClick={() => {
+              if (isShowSecondField) {
+                setIsShowSecondField1(true)
+              } else{
+                setIsShowSecondField(true)
+              }
+            }}>toggle</button>
+            <Field
+              name="name1"
+              validate={() => Promise.resolve()}
+              render={() => <></>}
+            />
+            {isShowSecondField && <Field
+              name="name2"
+              validate={() => Promise.resolve()}
+              render={() => <></>}
+            />}
+            {isShowSecondField1 && <Field
+              name="name3"
+              validate={() => Promise.resolve()}
+              render={() => <></>}
+            />}
+          </form>
+        )}
+      </Form>
+    }
+    const { getByText } = render(<Component/>)
+    fireEvent.click(getByText('toggle'))
+    fireEvent.click(getByText('toggle'))
+  })
 
   /**
    * Allow me to explain this. If we allow field level validation functions
